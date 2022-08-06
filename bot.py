@@ -20,13 +20,14 @@ from pyrogram.types import (CallbackQuery, InlineKeyboardButton,InlineKeyboardMa
 from pyromod import listen
 
 from config import Config
-import database
-from display_progress import progress_for_pyrogram
-from ffmpeg import MergeAudio, MetaData
-from uploader import uploadAudio
-from utils import get_readable_time, get_readable_file_size
-from rclone_upload import rclone_driver, rclone_upload
-from fs_utils import  get_media_info
+from helpers import database
+from helpers.display_progress import progress_for_pyrogram
+from helpers.ffmpeg import MergeAudio, MetaData
+from helpers.uploader import uploadAudio
+from helpers.utils import get_readable_time, get_readable_file_size
+from helpers.rclone_upload import rclone_driver, rclone_upload
+from helpers.fs_utils import  get_media_info
+
 
 botStartTime = time.time()
 
