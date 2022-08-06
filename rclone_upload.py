@@ -10,7 +10,7 @@ from pyrogram.client import Client
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import CallbackQuery, Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from helpers import database
+import database
 
 
 class Status:
