@@ -47,7 +47,7 @@ queueDB={}
 formatDB={}
 replyDB={}
 
-@mergeApp.on_message( filters.command(['login']) & filters.private & ~filters.edited )
+@mergeApp.on_message( filters.command(['login']) & filters.private)
 async def allowUser(c:Client, m: Message):
 	passwd = m.text.split()[-1]
 	if passwd == Config.PASSWORD:
