@@ -160,7 +160,7 @@ async def Audio_handler(c: Client, m: Message):
 	if queueDB.get(m.from_user.id, None) is None:
 		queueDB.update({m.from_user.id: []})
 	if (len(queueDB.get(m.from_user.id)) >= 0) and (len(queueDB.get(m.from_user.id))<100 ):
-		queueDB.get(m.from_user.id).append(m.id)
+		queueDB.get(m.from_user.id).int(append(m.message.id))
 		if len(queueDB.get(m.from_user.id)) == 1:
 			await editable.edit(
 				'**Send me some more Audio to merge them into single file**',parse_mode='markdown'
