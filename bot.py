@@ -23,7 +23,7 @@ from config import Config
 import database
 from display_progress import progress_for_pyrogram
 from ffmpeg import MergeAudio, MetaData
-from uploader import uploadAudio
+import uploadAudio
 from utils import get_readable_time, get_readable_file_size
 from rclone_upload import rclone_driver, rclone_upload
 from fs_utils import  get_media_info
