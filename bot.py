@@ -217,7 +217,7 @@ async def about_handler(c:Client,m:Message):
 		reply_markup=InlineKeyboardMarkup(
 			[
 				[
-					InlineKeyboardButton("Owner", url="https://t.me/searchinshiv"),
+					InlineKeyboardButton("Owner", url="https://t.me/searchingshiv"),
                     InlineKeyboardButton("PRO OWNER", url="https://t.me/R_4_Robo")
 				]
 
