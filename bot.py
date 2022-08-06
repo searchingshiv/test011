@@ -109,7 +109,7 @@ async def broadcast_handler(c:Client, m:Message):
 		quote=True
 	)
 
-@mergeApp.on_message(filters.command(['start']) & filters.private & ~filters.edited)
+@mergeApp.on_message(filters.command(['start']) & filters.private)
 async def start_handler(c: Client, m: Message):
 	await database.addUser(uid=m.from_user.id,fname=m.from_user.first_name, lname=m.from_user.last_name)
 	if await database.allowedUser(uid=m.from_user.id) is False:
