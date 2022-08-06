@@ -1,0 +1,11 @@
+hachoir
+Pyrogram
+pyromod
+pymongo
+Pillow
+TgCrypto
+dnspython
+psutil
+ffmpeg-python
+python-magic
+mutagen
