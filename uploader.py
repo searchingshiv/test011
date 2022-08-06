@@ -1,7 +1,7 @@
 import time
 from pyrogram import Client
 from pyrogram.types import CallbackQuery
-from helpers.display_progress import progress_for_pyrogram
+from display_progress import progress_for_pyrogram
 import os
 import re
 from helpers.fs_utils import  get_media_info, get_cover
