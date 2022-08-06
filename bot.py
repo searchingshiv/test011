@@ -31,7 +31,7 @@ from helpers.fs_utils import  get_media_info
 botStartTime = time.time()
 
 mergeApp = Client(
-	session_name="audio-merge-bot",
+	name="audio-merge-bot",
 	api_hash=Config.API_HASH,
 	api_id=Config.API_ID,
 	bot_token=Config.BOT_TOKEN,
@@ -160,7 +160,7 @@ async def Audio_handler(c: Client, m: Message):
 	if queueDB.get(m.from_user.id, None) is None:
 		queueDB.update({m.from_user.id: []})
 	if (len(queueDB.get(m.from_user.id)) >= 0) and (len(queueDB.get(m.from_user.id))<100 ):
-		queueDB.get(m.from_user.id).append(m.message.id)
+		queueDB.get(m.from_user.id).append(m.id)
 		if len(queueDB.get(m.from_user.id)) == 1:
 			await editable.edit(
 				'**Send me some more Audio to merge them into single file**',parse_mode='markdown'
