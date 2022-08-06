@@ -178,7 +178,7 @@ async def Audio_handler(c: Client, m: Message):
 			reply_markup=InlineKeyboardMarkup(markup),
 			quote=True
 		)
-		replyDB.update({m.from_user.id: reply_.message_id})
+		replyDB.update({m.from_user.id: reply_.Message_id})
 	elif len(queueDB.get(m.from_user.id)) > 100:
 		markup = await MakeButtons(c,m,queueDB)
 		await editable.text(
