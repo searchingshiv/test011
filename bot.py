@@ -188,7 +188,7 @@ async def Audio_handler(c: Client, m: Message):
 
 
 
-@mergeApp.on_message(filters.command(['help']) & filters.private & ~filters.edited)
+@mergeApp.on_message(filters.command(['help']) & filters.private)
 async def help_msg(c: Client, m: Message):
 	await m.reply_text(
 		text='''**Follow These Steps:
@@ -208,7 +208,7 @@ async def help_msg(c: Client, m: Message):
 		)
 	)
 
-@mergeApp.on_message( filters.command(['about']) & filters.private & ~filters.edited )
+@mergeApp.on_message( filters.command(['about']) & filters.private)
 async def about_handler(c:Client,m:Message):
 	await m.reply_text(
 		text='''
@@ -562,7 +562,7 @@ async def MakeButtons(bot: Client, m: Message, db: dict):
 	return markup
 
 
-@mergeApp.on_message(filters.command(['restart']) & filters.private & ~filters.edited & filters.user(Config.OWNER))
+@mergeApp.on_message(filters.command(['restart']) & filters.private & filters.user(Config.OWNER))
 async def restart_bot(c: Client, m: Message):
 
 	reply_msg = await m.reply_text(
