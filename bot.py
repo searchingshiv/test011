@@ -28,11 +28,10 @@ from helpers.utils import get_readable_time, get_readable_file_size
 from helpers.rclone_upload import rclone_driver, rclone_upload
 from helpers.fs_utils import  get_media_info
 
-
 botStartTime = time.time()
 
 mergeApp = Client(
-	name="audio-merge-bot",
+	session_name="audio-merge-bot",
 	api_hash=Config.API_HASH,
 	api_id=Config.API_ID,
 	bot_token=Config.BOT_TOKEN,
@@ -48,7 +47,7 @@ queueDB={}
 formatDB={}
 replyDB={}
 
-@mergeApp.on_message( filters.command(['login']) & filters.private)
+@mergeApp.on_message( filters.command(['login']) & filters.private & ~filters.edited )
 async def allowUser(c:Client, m: Message):
 	passwd = m.text.split()[-1]
 	if passwd == Config.PASSWORD:
@@ -110,7 +109,7 @@ async def broadcast_handler(c:Client, m:Message):
 		quote=True
 	)
 
-@mergeApp.on_message(filters.command(['start']) & filters.private)
+@mergeApp.on_message(filters.command(['start']) & filters.private & ~filters.edited)
 async def start_handler(c: Client, m: Message):
 	await database.addUser(uid=m.from_user.id,fname=m.from_user.first_name, lname=m.from_user.last_name)
 	if await database.allowedUser(uid=m.from_user.id) is False:
@@ -125,7 +124,7 @@ async def start_handler(c: Client, m: Message):
 	)
 
 
-@mergeApp.on_message((filters.document | filters.audio) & filters.private)
+@mergeApp.on_message((filters.document | filters.audio) & filters.private & ~filters.edited)
 async def Audio_handler(c: Client, m: Message):
 	if await database.allowedUser(uid=m.from_user.id) is False:
 		res = await m.reply_text(
@@ -189,7 +188,7 @@ async def Audio_handler(c: Client, m: Message):
 
 
 
-@mergeApp.on_message(filters.command(['help']) & filters.private)
+@mergeApp.on_message(filters.command(['help']) & filters.private & ~filters.edited)
 async def help_msg(c: Client, m: Message):
 	await m.reply_text(
 		text='''**Follow These Steps:
@@ -209,7 +208,7 @@ async def help_msg(c: Client, m: Message):
 		)
 	)
 
-@mergeApp.on_message( filters.command(['about']) & filters.private )
+@mergeApp.on_message( filters.command(['about']) & filters.private & ~filters.edited )
 async def about_handler(c:Client,m:Message):
 	await m.reply_text(
 		text='''
@@ -219,7 +218,7 @@ async def about_handler(c:Client,m:Message):
 			[
 				[
 					InlineKeyboardButton("Owner", url="https://t.me/searchingshiv"),
-                    InlineKeyboardButton("PRO OWNER", url="https://t.me/R_4_Robo")
+                    InlineKeyboardButton("OWNER PRO", url="https://https://t.me/R_4_Robo")
 				]
 
 			]
@@ -563,7 +562,7 @@ async def MakeButtons(bot: Client, m: Message, db: dict):
 	return markup
 
 
-@mergeApp.on_message(filters.command(['restart']) & filters.private & filters.user(Config.OWNER))
+@mergeApp.on_message(filters.command(['restart']) & filters.private & ~filters.edited & filters.user(Config.OWNER))
 async def restart_bot(c: Client, m: Message):
 
 	reply_msg = await m.reply_text(
