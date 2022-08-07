@@ -9,3 +9,4 @@ psutil
 ffmpeg-python
 python-magic
 mutagen
+Telethon
