@@ -1,5 +1,5 @@
 hachoir
-Pyrogram==1.4.16
+pyrogram==1.4.16
 pyromod
 pymongo
 Pillow
