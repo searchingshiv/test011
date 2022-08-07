@@ -27,8 +27,7 @@ from helpers.uploader import uploadAudio
 from helpers.utils import get_readable_time, get_readable_file_size
 from helpers.rclone_upload import rclone_driver, rclone_upload
 from helpers.fs_utils import  get_media_info
-from telethon import TelegramClient, events
-chat_ids = []
+
 botStartTime = time.time()
 
 mergeApp = Client(
@@ -161,7 +160,7 @@ async def Audio_handler(c: Client, m: Message):
 	if queueDB.get(m.from_user.id, None) is None:
 		queueDB.update({m.from_user.id: []})
 	if (len(queueDB.get(m.from_user.id)) >= 0) and (len(queueDB.get(m.from_user.id))<100 ):
-		queueDB.get(m.from_user.id).append(m.message.id)
+		queueDB.get(m.from_user.id).append(id)
 		if len(queueDB.get(m.from_user.id)) == 1:
 			await editable.edit(
 				'**Send me some more Audio to merge them into single file**',parse_mode='markdown'
