@@ -32,7 +32,7 @@ chat_ids = []
 botStartTime = time.time()
 
 mergeApp = Client(
-	name="audio-merge-bot",
+	session_name="audio-merge-bot",
 	api_hash=Config.API_HASH,
 	api_id=Config.API_ID,
 	bot_token=Config.BOT_TOKEN,
